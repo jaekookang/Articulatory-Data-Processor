@@ -1,0 +1,7 @@
+.ipynb_checkpoints
+*~
+.DS_store
+.vscode
+data/*.pkl
+data/*.log
+data/*.csv
