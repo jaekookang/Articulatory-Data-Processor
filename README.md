@@ -4,8 +4,9 @@ This repository includes a procedure for processing data features either from ar
 
 ## Status
 - [ ] **1. Preprocessing** (in progress)
-- [ ] 2. Forward modeling
-- [ ] 3. UCM analysis
+- [ ] 2. Statistical testing
+- [ ] 3. Forward modeling
+- [ ] 4. UCM analysis
 ---
 
 - Overview:

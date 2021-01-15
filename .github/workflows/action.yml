@@ -1,0 +1,23 @@
+name: Auto Assign to Project(s)
+
+on:
+  issues:
+    types: [opened, labeled]
+  pull_request:
+    types: [opened, labeled]
+env:
+  MY_GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+
+jobs:
+  assign_one_project:
+    runs-on: ubuntu-latest
+    name: Assign to One Project
+    steps:
+    - name: Assign issues and pull requests with `todo` label to project
+      uses: srggrs/assign-one-project-github-action@1.2.0
+      if: |
+        contains(github.event.issue.labels.*.name, 'todo') ||
+        contains(github.event.pull_request.labels.*.name, 'todo')
+      with:
+        project: 'https://github.com/users/jaekookang/projects/1'
+        column_name: 'To do'
