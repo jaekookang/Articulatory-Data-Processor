@@ -142,15 +142,23 @@ def formants_by_condition(arr, df, formant_col, formant_val_col, condition_col, 
     return arr
 
 
-def plot_palpha(ax, pal=None, pha=None, fontsize=10):
+def plot_palpha(ax, pal=None, pha=None, fontsize=None, xlim=(-70,40), ylim=(-50,30), tickspacing=20):
     if pal is not None:
         ax.plot(pal[:, 0], pal[:, 1], color='black')
     if pha is not None:
         ax.plot(pha[:, 0], pha[:, 1], color='black')
-    ax.set_xlim([-90, 50])
-    ax.set_ylim([-40, 20])
-    ax.set_xlabel('Back <--> Front (mm)', fontsize=fontsize)
-    ax.set_ylabel('Low <--> High (mm)', fontsize=fontsize)
+    #ax.set_xlim([-90, 50])
+    #ax.set_ylim([-40, 20])
+    ax.set_xlim(xlim)
+    ax.set_ylim(ylim)
+    ax.xaxis.set_major_locator(plticker.MultipleLocator(base=tickspacing))
+    ax.yaxis.set_major_locator(plticker.MultipleLocator(base=tickspacing))
+    if fontsize is not None:
+        ax.set_xlabel('Back <--> Front (mm)', fontsize=fontsize)
+        ax.set_ylabel('Low <--> High (mm)', fontsize=fontsize)
+    else:
+        ax.set_xlabel('Back <--> Front (mm)')
+        ax.set_ylabel('Low <--> High (mm)')
     return ax
 
 
@@ -291,7 +299,7 @@ def plot_F2F3_ref(ax, F2, F3, labels, use_mel=False):
     return ax
 
 
-def plot_F1F2(ax, F1, F2, show_label=True, use_mel=False, show_title=False, **kwargs):
+def plot_F1F2(ax, F1, F2, show_label=True, use_mel=False, show_title=False, tickspacing=200, **kwargs):
     # F2-F1
     ax.grid(True)
     if show_title:
@@ -300,6 +308,8 @@ def plot_F1F2(ax, F1, F2, show_label=True, use_mel=False, show_title=False, **kw
     ax.plot(F2, F1, 'o', **kwargs)
     ax.invert_xaxis()
     ax.invert_yaxis()
+    ax.xaxis.set_major_locator(plticker.MultipleLocator(base=tickspacing))
+    ax.yaxis.set_major_locator(plticker.MultipleLocator(base=tickspacing))
     if use_mel:
         ax.set_xlim([2000, 800])
         ax.set_ylim([1200, 200])
