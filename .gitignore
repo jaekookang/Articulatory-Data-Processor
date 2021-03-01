@@ -6,3 +6,4 @@ data/*.pkl
 data/*.log
 data/*.csv
 __pycache__
+data_stat.csv
