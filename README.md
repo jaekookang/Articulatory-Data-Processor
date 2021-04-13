@@ -3,8 +3,8 @@
 This repository includes a procedure for processing data features either from articulation and acoustics. This step precedes the procedure described [here](https://github.com/jaekookang/Articulatory-Data-Extractor). This is part of unpublished work of Jaekoo Kang's dissertation. Note that data files used here are not uploaded here. You may need to request the use of data if necessary, but it is not guaranteed.
 
 ## Status
-- [ ] **1. Preprocessing** (in progress)
-- [ ] 2. Statistical testing
+- [x] **1. Preprocessing**
+- [x] 2. Statistical testing
 - [ ] 3. Forward modeling
 - [ ] 4. UCM analysis
 ---

@@ -7,3 +7,4 @@ data/*.log
 data/*.csv
 __pycache__
 data_stat.csv
+data_processed/data*
