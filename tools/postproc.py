@@ -148,7 +148,8 @@ def plot_F1F2_df(ax, df, vowel_col='Vowel', vowel_list=None, colors=None,
                  connected_linestyle='-',
                  sns_theme='whitegrid',
                  sns_context='poster',
-                 palette='tab10'):
+                 palette='tab10',
+                 return_params=False):
     '''Plot F1-F2 using dataframe (default: mel scale)
     which_rate: 'N' or 'F' (IEEE dataset)
     vowel_col: vowel column name (eg., 'Vowel')
@@ -198,14 +199,20 @@ def plot_F1F2_df(ax, df, vowel_col='Vowel', vowel_list=None, colors=None,
     # Add ellipse
     F1s = []
     F2s = []
+    params = {v:'' for v in vowel_list}
     for which_vowel, color in zip(vowel_list, colors):
         F1 = df[F1_col].loc[df[vowel_col] == which_vowel].values
         F2 = df[F2_col].loc[df[vowel_col] == which_vowel].values
 
         if center_only is False:
             # Plotting the distribution
-            ax, (x_std, y_std) = confidence_ellipse(F1, F2, ax, n_std=1.96,
-                                                    facecolor='none', edgecolor=color, linestyle=ellipse_linestyle)
+            ax, (x_std, y_std), p = confidence_ellipse(F1, F2, ax, 
+                                                            n_std=1.96,
+                                                            facecolor='none',
+                                                            edgecolor=color, 
+                                                            linestyle=ellipse_linestyle,
+                                                            return_params=True)
+            params[which_vowel] = p
 
         elif center_only == 'mean':
             # Plotting vowel-centers and connected to make ovoids
@@ -257,10 +264,14 @@ def plot_F1F2_df(ax, df, vowel_col='Vowel', vowel_list=None, colors=None,
         ax.set_ylabel('F1', fontsize=20)
     # tighten
     plt.gcf().tight_layout()
+    
+    returned = [ax]
     if return_colors:
-        return ax, colors
+        return returned + [colors]
+    if return_params:
+        return returned + [params]
     else:
-        return ax
+        return returned[0]
 
 
 def plot_F2F3_df():
