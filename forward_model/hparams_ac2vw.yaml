@@ -1,0 +1,11 @@
+name: ac2vw
+ndim_tot: 10
+ndim_x: 2
+ndim_y: 9
+ndim_z: 1
+n_hid_layer: 3
+n_hid_dim: 512
+test_split: 0.1
+n_epochs: 1000
+n_display: 1
+n_iter_no_change: 100
