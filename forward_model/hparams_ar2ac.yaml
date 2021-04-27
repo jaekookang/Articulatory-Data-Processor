@@ -1,7 +1,7 @@
 name: ar2ac
 ndim_tot: 4
 ndim_x: 4
-ndim_y: 2
+ndim_y: 3
 ndim_z: 1
 n_hid_layer: 3
 n_hid_dim: 256

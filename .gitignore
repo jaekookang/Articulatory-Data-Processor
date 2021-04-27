@@ -8,4 +8,5 @@ data/*.csv
 __pycache__
 data_stat.csv
 data_processed/data*
+data_processed/backup*
 data/2021-01-15/*
