@@ -322,7 +322,7 @@ def _duration_by_condition(df, duration_col='Duration',
     return g
 
 
-def _plot_dur_formants_by_rate(df, arr, vowel_list, title='Plot by Speech Rate',
+def plot_dur_formants_by_rate(df, arr, vowel_list, title='Plot by Speech Rate',
                                x='Phone', y='PhoneDur', hue='Rate', use_mel=False):
     '''Plot duration and formant distribution by speech rate
     2020-09-28: this function is not longer used (not pretty)
